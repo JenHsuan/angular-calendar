@@ -94,6 +94,7 @@ export class CalendarWidgetOverlayComponent {
   }
 
   onTodayButtonClicked() {
+    this.date = new Date();
     this.year = this.date.getFullYear();
     this.month = this.date.getMonth();
 
@@ -106,6 +107,7 @@ export class CalendarWidgetOverlayComponent {
     item.setAttribute("style", CALENDAR_DATES_ITEM_STYLE_MAP.get(type) ?? "");
     item.onclick = () => {
       console.log(date);
+      this.onCalendarDatesItemClicked(date);
     };
 
     if (type !== CalendarWidgetItemType.ACTIVE) {
@@ -121,5 +123,11 @@ export class CalendarWidgetOverlayComponent {
     this.calendarDates.nativeElement.appendChild(item);
 
     return item;
+  }
+
+  private onCalendarDatesItemClicked(date: Date) {
+    this.date = date;
+
+    this.update();
   }
 }
