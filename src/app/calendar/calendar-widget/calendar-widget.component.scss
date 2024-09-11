@@ -1,0 +1,88 @@
+.calendar-container {
+  background: #fff;
+  width: 28.125em;
+  border-radius: 1em;
+  box-shadow: 0 1em 2.5em rgba(0, 0, 0, 0.12);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  header {
+    display: flex;
+    align-items: center;
+    padding: 1em 2em .5em;
+    justify-content: space-between;
+
+    .calendar-current-date {
+      font-weight: 500;
+      font-size: 1.45rem;
+    }
+
+    .calendar-navigation {
+      display: flex;
+
+      .button-group {
+        margin-left: .5em;
+      }
+
+      span {
+        height: 1.8em;
+        width: 1em;
+        line-height: 1.8em;
+        font-size: 1em;
+        margin-left: .3em;
+        color: #007bff;
+        cursor: pointer;
+        display: inline-block;
+        border-radius: .1em;
+        text-align: center;
+        &:hover {
+          background-color: #d4e1ee;
+        }
+      }
+
+      button {
+        height: 1.8em;
+        width: 5em;
+        cursor: pointer;
+        text-align: center;
+        user-select: none;
+        color: #007bff;
+        font-size: 1em;
+        border: none;
+        border-radius: .1em;
+        &:hover {
+          background: #f2f2f2;
+        }
+      }
+    }
+  }
+}
+
+.calendar-body {
+  border: 1px solid #ccc;
+
+  .calendar-weekdays {
+    li {
+      cursor: default;
+      font-weight: 700;
+    }
+  }
+
+  .calendar-dates {
+    margin-bottom: 1.5em;
+    border-top: 1px solid #ccc;
+  }
+
+  ul {
+    list-style: none;
+    flex-wrap: wrap;
+    display: flex;
+    text-align: center;
+    padding: 0;
+  }
+
+  li {
+    width: calc(100% / 7);
+    font-size: 1.07rem;
+    color: #414141;
+  }
+}
