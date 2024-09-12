@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import _ from 'lodash';
 
-import { CALENDAR_DATES_ITEM_STYLE_MAP, CalendarWidgetItemType, YEAR_CALENDAR_ITEM_STYLE_MAP } from '../service/calendar-widget.domain';
+import { CALENDAR_DATES_ITEM_STYLE_MAP, CalendarWidgetItemType, CALENDAR_WIDGET_DATA, CalendarWidgetItemParams, YEAR_CALENDAR_ITEM_STYLE_MAP } from '../service/calendar-widget.domain';
 
 const MONTHS = [
   "January",
@@ -45,6 +45,9 @@ export class CalendarWidgetOverlayComponent {
   @ViewChild('yearCalendaritems') yearCalendaritems: ElementRef;
 
   private cd = inject(ChangeDetectorRef);
+
+
+  protected params: CalendarWidgetItemParams = inject(CALENDAR_WIDGET_DATA);
 
   get calendarCurrentDate(): string {
     return `${MONTHS[this.month]} ${this.year}`;
@@ -144,6 +147,12 @@ export class CalendarWidgetOverlayComponent {
     this.resetDateTimeProperties();
 
     this.update();
+
+    this.params.dateSubject.next(this.date);
+  }
+
+  onOkButtonClicked() {
+    this.params.overlayCancelledSubject.next(true);
   }
 
   private resetDateTimeProperties() {
@@ -209,14 +218,14 @@ export class CalendarWidgetOverlayComponent {
     this.hour = hour;
     this.date.setHours(parseInt(this.hour));
 
-    console.log(this.date);
+    this.params.dateSubject.next(this.date);
   }
 
   onMinuteChanged(minute: string) {
     this.minute = minute;
     this.date.setMinutes(parseInt(this.minute));
 
-    console.log(this.date);
+    this.params.dateSubject.next(this.date);
   }
 
   onCurrentDateClicked() {
@@ -233,6 +242,7 @@ export class CalendarWidgetOverlayComponent {
     this.date.setMinutes(parseInt(this.minute));
 
     this.update();
+    this.params.dateSubject.next(this.date);
   }
 
   private onYearCalendarItemClicked(year: string) {

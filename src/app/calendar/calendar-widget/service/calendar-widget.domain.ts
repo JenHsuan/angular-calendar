@@ -1,3 +1,6 @@
+import { InjectionToken } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+
 export const CALENDAR_DATES_ITEM_STYLE = `
   font-size: 1.07rem; 
   cursor: pointer; 
@@ -59,3 +62,10 @@ export const YEAR_CALENDAR_ITEM_STYLE_MAP = new Map<CalendarWidgetItemType, stri
   [ CalendarWidgetItemType.ACTIVE, `${YEAR_CALENDAR_DATES_ITEM_STYLE}${ACTIVE_YEAR_CALENDAR_DATES_ITEM_STYLE}`],
   [ CalendarWidgetItemType.NONE, YEAR_CALENDAR_DATES_ITEM_STYLE]
 ]);
+
+export class CalendarWidgetItemParams {
+  overlayCancelledSubject: BehaviorSubject<boolean>;
+  dateSubject: BehaviorSubject<Date>;
+}
+
+export const CALENDAR_WIDGET_DATA = new InjectionToken<CalendarWidgetItemParams>('calendar-widget');

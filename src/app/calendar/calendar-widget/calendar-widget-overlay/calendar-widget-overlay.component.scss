@@ -109,16 +109,19 @@
       }
     }
   
-    .update-button {
-      height: 1.8em;
-      width: 5em;
-      font-size: 1.2em;
+    .button-group {
       margin-left: auto;
       margin-right: .5em;
-      border-radius: .3em;
-      border: 1px solid #ccc;
-      background-color: #fff;
-      cursor: pointer;
+      .update-button {
+        height: 1.8em;
+        width: 5em;
+        font-size: 1.2em;
+        margin-right: .1em;
+        border-radius: .3em;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        cursor: pointer;
+      }
     }
   }
 }
