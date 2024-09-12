@@ -1,16 +1,11 @@
 <div class="calendar-container">
   <header class="calendar-header">
-    <div class="calendar-navigation">
-      <button (click)="onTodayButtonClicked()">Today</button>
-      <div class="button-group">
-        <span id="calendar-prev" (click)="onNavigationButtonClicked(false)"><</span>
-        <span id="calendar-next" (click)="onNavigationButtonClicked(true)">></span>
-      </div>
-    </div>
-    <p class="calendar-current-date">{{ calendarCurrentDate }}</p>
+    <span id="calendar-prev" (click)="onNavigationButtonClicked(false)"><</span>
+    <p class="calendar-current-date" (click)="onCurrentDateClicked()">{{ calendarCurrentDate }}</p>
+    <span id="calendar-next" (click)="onNavigationButtonClicked(true)">></span>
   </header>
 
-  <div class="calendar-body">
+  <div class="calendar-body" [class.active]="isCalendarDatesItemsDisplayed">
     <ul class="calendar-weekdays">
       <li>Sun</li>
       <li>Mon</li>
@@ -22,5 +17,25 @@
     </ul>
 
     <ul class="calendar-dates" #calendarDates></ul>
+  </div>
+
+  <div class="year-calendar-body" [class.active]="!isCalendarDatesItemsDisplayed">
+    <ul class="year-calendar-items" #yearCalendaritems></ul>
+  </div>
+
+  <div class="calendar-footer">
+    <div class="button-group">
+      <select class="calendar-hours" (ngModelChange)="onHourChanged($event)" [(ngModel)]="hour">
+        <option *ngFor="let item of candidateHours">
+          {{ item }}
+        </option>
+      </select>
+      <select class="calendar-minutes" (ngModelChange)="onMinuteChanged($event)" [(ngModel)]="minute">
+        <option *ngFor="let item of candidateMinutes">
+          {{ item }}
+        </option>
+      </select>
+    </div>
+    <button class="update-button" (click)="onTodayButtonClicked()">Today</button>
   </div>
 </div>

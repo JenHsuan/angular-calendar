@@ -14,75 +14,111 @@
     .calendar-current-date {
       font-weight: 500;
       font-size: 1.45rem;
+      cursor: pointer;
     }
 
-    .calendar-navigation {
+    span {
+      cursor: pointer;
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+
+    #calendar-prev {
+      margin-left: .8em;
+    }
+
+    #calendar-next {
+      margin-right: .8em;
+    }
+  }
+
+  .calendar-body {
+    visibility: hidden;
+    display: none;
+    border: none;
+    &.active {
+      border: 1px solid #ccc;
+      visibility: visible;
+      display: block;
+    }
+  
+    .calendar-weekdays {
+      li {
+        cursor: default;
+        font-weight: 700;
+      }
+    }
+  
+    .calendar-dates {
+      margin-bottom: 1.5em;
+      border-top: 1px solid #ccc;
+    }
+  
+    ul {
+      list-style: none;
+      flex-wrap: wrap;
       display: flex;
-
-      .button-group {
-        margin-left: .5em;
-      }
-
-      span {
-        height: 1.8em;
-        width: 1em;
-        line-height: 1.8em;
-        font-size: 1em;
-        margin-left: .3em;
-        color: #007bff;
-        cursor: pointer;
-        display: inline-block;
-        border-radius: .1em;
-        text-align: center;
-        &:hover {
-          background-color: #d4e1ee;
-        }
-      }
-
-      button {
-        height: 1.8em;
-        width: 5em;
-        cursor: pointer;
-        text-align: center;
-        user-select: none;
-        color: #007bff;
-        font-size: 1em;
-        border: none;
-        border-radius: .1em;
-        &:hover {
-          background: #f2f2f2;
-        }
-      }
+      text-align: center;
+      padding: 0;
     }
-  }
-}
-
-.calendar-body {
-  border: 1px solid #ccc;
-
-  .calendar-weekdays {
+  
     li {
-      cursor: default;
-      font-weight: 700;
+      width: calc(100% / 7);
+      font-size: 1.07rem;
+      color: #414141;
     }
   }
 
-  .calendar-dates {
-    margin-bottom: 1.5em;
-    border-top: 1px solid #ccc;
+  .year-calendar-body {
+    border: none;
+    visibility: hidden;
+    display: none;
+    &.active {
+      border: 1px solid #ccc;
+      visibility: visible;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+      flex-wrap: wrap;
+      display: flex;
+      text-align: center;
+      padding: 0;
+    }
+  
+    li {
+      width: calc(100% / 5);
+      font-size: 1.07rem;
+      color: #414141;
+    }
   }
 
-  ul {
-    list-style: none;
-    flex-wrap: wrap;
+  .calendar-footer {
+    padding: 1em;
     display: flex;
-    text-align: center;
-    padding: 0;
-  }
-
-  li {
-    width: calc(100% / 7);
-    font-size: 1.07rem;
-    color: #414141;
+    .button-group {
+      margin-left: 1em;
+      .calendar-hours, .calendar-minutes {
+        border: none;
+        width: 2.2em;
+        font-size: 1.3em;
+        font-weight: 500;
+        margin: .3em;
+        margin-right: .5em;
+      }
+    }
+  
+    .update-button {
+      height: 1.8em;
+      width: 5em;
+      font-size: 1.2em;
+      margin-left: auto;
+      margin-right: .5em;
+      border-radius: .3em;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      cursor: pointer;
+    }
   }
 }
